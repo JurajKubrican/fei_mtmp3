@@ -22,7 +22,7 @@ namespace Assets.Scripts
         void Start()
         {
             _initialQuaternion = transform.rotation;
-            SetObject(ModelIndex);
+  
         }
 
         // Update is called once per frame

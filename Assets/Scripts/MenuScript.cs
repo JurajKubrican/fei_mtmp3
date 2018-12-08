@@ -11,18 +11,20 @@ namespace Assets.Scripts
 
         private readonly Vector3[,] _positions = new Vector3[,]
         {
-            {new Vector3(7, 5, -2), new Vector3(-2.4f, 1.9f, -4.0f)},
-            {new Vector3(7, 5, -2), new Vector3(-2.4f, 1.9f, -4.0f)},
-            {new Vector3(7, 5, -2), new Vector3(-2.4f, 1.9f, -4.0f)},
-            {new Vector3(7, 5, -2), new Vector3(-2.4f, 1.9f, -4.0f)}
+            {new Vector3(5, 3.5f, -1.5f), new Vector3(-1.8f, 2f, -2f)},
+            {new Vector3(-2.7f, 3.3f, -2.7f), new Vector3(-1.6f, 3.1f, 4.7f)},
+            {new Vector3(0, 3.8f, -2), new Vector3(0, 2.5f, -2)},
+            {new Vector3(0f, 4.7f, -5.4f), new Vector3(6.5f, 5.5f, -1.6f)},
+
         };
 
         private readonly Quaternion[,] _rotations = new Quaternion[,]
         {
             {Quaternion.Euler(30, -80, 0), Quaternion.Euler(30, -300, 0)},
-            {Quaternion.Euler(30, -80, 0), Quaternion.Euler(30, -300, 0)},
-            {Quaternion.Euler(30, -80, 0), Quaternion.Euler(30, -300, 0)},
-            {Quaternion.Euler(30, -80, 0), Quaternion.Euler(30, -300, 0)}
+            {Quaternion.Euler(30, 51, 0), Quaternion.Euler(30, 157, 0)},
+            {Quaternion.Euler(30, 0, 0), Quaternion.Euler(30, 0, 0)},
+            {Quaternion.Euler(30, 0, 0), Quaternion.Euler(30, -80, 0)},
+
         };
 
         // Use this for initialization
@@ -30,6 +32,7 @@ namespace Assets.Scripts
         {
             _platform = GameObject.Find("Platform").GetComponent<PlatformScript>();
             _camera = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+            SetModel(0);
         }
 
         // Update is called once per frame
@@ -98,8 +101,6 @@ namespace Assets.Scripts
         public void SetModel(int index)
         {
             _platform.SetObject(index);
-
-            print(ModelHolder.transform.GetChild(index).GetChild(1).name);
 
             var btn1 = this.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
             btn1.SetText(ModelHolder.transform.GetChild(index).GetChild(1).GetChild(0).name + " (q)");
